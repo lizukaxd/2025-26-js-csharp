@@ -1,122 +1,159 @@
-﻿//1
+﻿//8
+using System.Data;
 
-Console.Write("Medence átmérője: ");
-double atmero = Convert.ToDouble(Console.ReadLine());
-Console.Write("Medence mélysége: ");
-double melyseg = Convert.ToDouble(Console.ReadLine());
-double sugar = atmero / 2;
-double terfogat = Math.PI * sugar * sugar * melyseg;
-double eredmeny = Math.Round(terfogat, 1);
-Console.WriteLine("Ennyi köbméter víz fér bele: "+ eredmeny);
+int alma = 10;
 
-//2
+Console.WriteLine(alma);
+Console.WriteLine("alma");
+Console.WriteLine("kétszerese: " + alma*2);
+Console.WriteLine("kettővel kevesebb: " + (alma-2));
+Console.WriteLine("a fele: " + alma/2);
+Console.WriteLine("a négyzete: " + alma*alma);
+Console.WriteLine("2, 3, 5-tel osztási maradék: " + alma%2 + " " + alma%3 + " " + alma%5);
 
-Console.Write("Kölcsön összege: ");
-double osszeg = Convert.ToDouble(Console.ReadLine());
-Console.Write("Az éves kamat: ");
-double kamat = Convert.ToDouble(Console.ReadLine());
-Console.Write("Futamidő években: ");
-int futamido = Convert.ToInt32(Console.ReadLine());
+//9
+int korte = 5;
+korte++;
+Console.WriteLine(korte);
+korte += 5;
+Console.WriteLine(korte);
+korte--;
+Console.WriteLine(korte);
+korte -= 3;
+Console.WriteLine(korte);
+korte *= 4;
+Console.WriteLine(korte);
+korte /= 2;
+Console.WriteLine(korte);
+korte %= 3;
+Console.WriteLine(korte);
 
-double kamat1 = kamat / 12 / 100;
-int futamido1 = futamido * 12;
+//10
 
-double reszlet = osszeg * (kamat1 * Math.Pow(1 + kamat1, futamido1)) / (Math.Pow(1 + kamat1, futamido1) - 1);
-double havitorleszto = Math.Round(reszlet, 2);
-Console.WriteLine($"Havi törlesztőrészlet: {havitorleszto} Ft");
+int a;
+int b, c, d;
+a = 6;
+Console.WriteLine(a);
+a = 1916;
+Console.WriteLine(a);
+a += 100;
+Console.WriteLine(a);
+Console.Write("Add meg a neved: ");
+string nev =  Console.ReadLine();
 
-//3
+Console.Write("Add meg a születési évedet: ");
+int szulev = int.Parse(Console.ReadLine());
+int kor = a - szulev;
 
-Console.WriteLine("Első időpont:");
-Console.Write("Óra: ");
-int ora1 = Convert.ToInt32(Console.ReadLine());
-Console.Write("Perc: ");
-int perc1 = Convert.ToInt32(Console.ReadLine());
-Console.Write("Másodperc: ");
-int mp1 = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine($"Én, {nev} {kor} éves vagyok.");
 
-Console.WriteLine("\nMásodik időpont:");
-Console.Write("Óra: ");
-int ora2 = Convert.ToInt32(Console.ReadLine());
-Console.Write("Perc: ");
-int perc2 = Convert.ToInt32(Console.ReadLine());
-Console.Write("Másodperc: ");
-int mp2 = Convert.ToInt32(Console.ReadLine());
+//11
 
-int masodperc1 = ora1 * 3600 + perc1 * 60 + mp1;
-int masodperc2 = ora2 * 3600 + perc2 * 60 + mp2;
-int kulonbseg = Math.Abs(masodperc2 - masodperc1);
+double l;
+l = 5; 
+Console.WriteLine(l);  
+Console.WriteLine("A szám kétszerese: "+ (l*2));
+l += 3;
+Console.WriteLine("+3: "+ l);
+int k = 3;
+Console.WriteLine("k tízszerese: " + (k * 10));
+double p = l / k;
+Console.WriteLine("l/k hányadosa: " + p);
 
-Console.WriteLine($"A két időpont közötti különbség: {kulonbseg} másodperc.");
+//12
+int barack = 50;
+int szilva = 30;
+int osszeg = barack + szilva;
+Console.WriteLine("barack + szilva= "+ osszeg);
 
-//4
+//13
 
-Console.Write("Az első szám: ");
-int szam = Convert.ToInt32(Console.ReadLine());
-Console.Write("Az második szám: ");
-int szam2 = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("A két szám összegének négyzetgyöke: "+ Math.Sqrt(szam + szam2) );
+int x = 7;
+int y = 1;
+int w = 3;
 
-//5
+int eredmeny1 = (x - y) / w;
+Console.WriteLine("(x - y) / w =  (" + x + " - " + y + ") / " + w + " = "+ eredmeny1);
 
-Console.Write("Egy pozitív valós szám: ");
-double val1 = Convert.ToDouble(Console.ReadLine());
-Console.WriteLine($" A megadott szám a {Math.Floor(val1)} és a {Math.Ceiling(val1)} egész számok között van, és ezek közül a {Math.Round(val1)} számhoz van közelebb.\r\n A szám egész része: {Math.Floor(val1)}\r\n A szám törtrésze: {val1- Math.Floor(val1)}");
+int eredmeny2 = ((x + y) * (2 * x - w));
+Console.WriteLine("(x + y)(2x - w) = (" + x + " + " + y + ")(" + "2*" + x + " - " + w + ") = " + eredmeny2);
 
-//6
+int eredmeny3 = (3 * x - 3 * y) / w;
+Console.WriteLine("(3x - 3y) / w = (3*" + x + " - 3*" + y + ") / " + w + " = " + eredmeny3);
 
-Console.Write("Első egész szám: ");
-int eg1 = Convert.ToInt32(Console.ReadLine());
-Console.Write("Második egész szám: ");
-int eg2 = Convert.ToInt32(Console.ReadLine());
+int eredmeny4 = 2 * x * w + 4 * y;
+Console.WriteLine("2xw + 4y = 2*" + x + "*" + w + " + 4*" + y + " = " + eredmeny4);
 
-int ed;
+// 14
 
-if (eg1 > eg2)
-{
-    ed = eg1 - eg2;
-}
-else if (eg2 > eg1)
-{
-    ed = eg2 - eg1;
-}
-else
-{
-    ed = 0;
-}
+int szam1 = 17;
+int szam2 = 5;
 
-Console.WriteLine($"A két szám különbsége: {ed}");
+int hanyadosInt = szam1 / szam2;
+int maradekInt = szam1 % szam2;
 
-//7
+Console.WriteLine("Egész számok:");
+Console.WriteLine(szam1 + " / " + szam2 + " = " + hanyadosInt);
+Console.WriteLine(szam1 + " % " + szam2 + " = " + maradekInt);
 
-Console.Write("Az első szám: ");
-int sza1 = Convert.ToInt32(Console.ReadLine());
-Console.Write("A második szám: ");
-int sza2 = Convert.ToInt32(Console.ReadLine());
-Console.Write("A harmadik szám: ");
-int sza3 = Convert.ToInt32(Console.ReadLine());
+double valos1 = 17.0;
+double valos2 = 5.0;
 
-int min = Math.Min(sza1, Math.Min(sza2, sza3));
-int max = Math.Max(sza1, Math.Max(sza2, sza3));
-int kozep = sza1 + sza2 + sza3 - min - max;
+double hanyadosDouble = valos1 / valos2;
 
-Console.WriteLine($"A számok növekvő sorrendben: {min}, {kozep}, {max}");
+Console.WriteLine("\nValós számok:");
+Console.WriteLine(valos1 + " / " + valos2 + " = " + hanyadosDouble);
 
-//8
+double maradekDouble = valos1 % valos2;
+Console.WriteLine(valos1 + " % " + valos2 + " = " + maradekDouble);
 
-Console.Write("Első befogó: ");
-double a = Convert.ToDouble(Console.ReadLine());
+int szam3 = 23;
+int szam4 = 4;
+Console.WriteLine("\nMás értékek (egész számok):");
+Console.WriteLine(szam3 + " / " + szam4 + " = " + (szam3 / szam4));
+Console.WriteLine(szam3 + " % " + szam4 + " = " + (szam3 % szam4));
 
-Console.Write("Második befogó: ");
-double b = Convert.ToDouble(Console.ReadLine());
+//15
 
-double c = Math.Sqrt(a * a + b * b);
-double alfa = Math.Atan(a / b) * (180 / Math.PI);
-double beta = Math.Atan(b / a) * (180 / Math.PI);
+Console.Write("x = ");
+double x1 = Convert.ToDouble(Console.ReadLine());
 
-Console.WriteLine($"Átfogó: {c}");
-Console.WriteLine($"Alfa: {alfa} fok");
-Console.WriteLine($"Béta: {beta} fok");
+Console.Write("y = ");
+double y2 = Convert.ToDouble(Console.ReadLine());
 
+double osszeg2 = x1 + y2;
+double kulonbseg = x1 - y2;
+double szorzat = x1 * y2;
+double hanyados = x1 / y2;
+
+double x1Negyzet = Math.Pow(x1, 2);
+double y2Negyzet = Math.Pow(y2, 2);
+
+double x1Kob = Math.Pow(x1, 3);
+double y2Kob = Math.Pow(y2, 3);
+
+Console.WriteLine("\n--- Eredmények ---");
+Console.WriteLine($"x = {x1}");
+Console.WriteLine($"y = {y2}");
+Console.WriteLine($"x + y = {osszeg2}");
+Console.WriteLine($"x - y = {kulonbseg}");
+Console.WriteLine($"x * y = {szorzat}");
+Console.WriteLine($"x / y = {hanyados:F2}"); 
+Console.WriteLine($"x^2 = {x1Negyzet}");
+Console.WriteLine($"y^2 = {y2Negyzet}");
+Console.WriteLine($"x^3 = {x1Kob}");
+Console.WriteLine($"y^3 = {y2Kob}");
+
+//16
+
+Console.Write("Adjon meg egy valós számot (d): ");
+double d1 = Convert.ToDouble(Console.ReadLine());
+
+Console.Write("Adjon meg egy pozitív egész számot (n): ");
+int n2 = Convert.ToInt32(Console.ReadLine());
+
+double kerekitett = Math.Round(d1, n2);
+
+Console.WriteLine($"A/az {d1} {n2} tizedes jegyre kerekített értéke: {kerekitett}");
 
 
