@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gomb</title>
+</head>
+<body>
+    <h1>Elso feladat</h1>
+    <button id="random">Random szám generátor</button>
+        <p id="poz">Pozitívak: </p>
+        <p id="neg">Negatívak: </p>
+        <p id="nulla">Nulla: </p>
+        <p id="osszesen">Összesen: 0</p>
+
+<script>
+  let ossz = 0;
+
+  document.getElementById("random").onclick = function() {
+    let randomSzam = Math.floor(Math.random() * 11) - 5; 
+    ossz++;
+
+    if (randomSzam > 0) {
+      document.getElementById("poz").innerHTML += " " + randomSzam;
+    } 
+    else if (randomSzam < 0) {
+      document.getElementById("neg").innerHTML += " " + randomSzam;
+    } 
+    else {
+      document.getElementById("nulla").innerHTML += " " + randomSzam;
+    }
+
+    document.getElementById("osszesen").innerHTML = "Összesen: " + ossz;
+  }
+</script>
+<hr>
+    <h1>Masodik feladat</h1>
+
+    <button id="penzGomb">Generálj pénzt</button>
+<p id="fagyi">Fagyit: </p>
+<p id="torta">Tortát: </p>
+<p id="limonadé">Limonádét: </p>
+<p id="penz">Pénzem: </p>
+
+<script>
+  let fagyiAr = 500;
+  let tortaAr = 1200;
+  let limonadeAr = 700;
+
+  document.getElementById("penzGomb").onclick = function() {
+    // random pénz 0-1500 között
+    let penz = Math.floor(Math.random() * 1501); 
+    document.getElementById("penz").innerHTML = "Pénzem: " + penz + " Ft";
+
+    // fagyi
+    if (penz >= fagyiAr) {
+      document.getElementById("fagyi").innerHTML = "Fagyit: tudok venni";
+    } else {
+      document.getElementById("fagyi").innerHTML = "Fagyit: nem tudok venni";
+    }
+
+    // torta
+    if (penz >= tortaAr) {
+      document.getElementById("torta").innerHTML = "Tortát: tudok venni";
+    } else {
+      document.getElementById("torta").innerHTML = "Tortát: nem tudok venni";
+    }
+
+    // limonádé
+    if (penz >= limonadeAr) {
+      document.getElementById("limonadé").innerHTML = "Limonádét: tudok venni";
+    } else {
+      document.getElementById("limonadé").innerHTML = "Limonádét: nem tudok venni";
+    }
+  }
+</script>
+<hr>
+    <h1>Harmadik feladat</h1>
+
+    <button id="kocka">Dobj a kockaval</button>
+    <p id="eredmeny">A dobott szám:</p>
+
+    <script>
+        document.getElementById("kocka").onclick = function() {
+            let szam = Math.floor(Math.random()* 6  ) + 1;
+            let szoveg = "A dobott szám: a(z) " + szam + ", ami ";
+
+            
+      if (szam % 2 === 0) {
+        szoveg += "páros";
+      } else {
+        szoveg += "páratlan";
+      }
+
+      document.getElementById("eredmeny").innerHTML = szoveg;
+        }
+
+    </script>
+
+<hr>
+    <h1>Negyedik feladat</h1>
+
+        <button id="evszam">Random szam 1-12 kozott: </button>
+        <p id="eredmeny1">A szám: <br>
+Hónap: <br>
+Évszak: <br>
+</p>
+
+        <script>
+            document.getElementById("evszam").onclick = function() {
+                let szam1 = Math.floor(Math.random() * 12) + 1;
+                let honap = "";
+                let evszak = "";
+
+                
+    if (szam1 === 1) { honap = "Január"; evszak = "Tél"; }
+    else if (szam1 === 2) { honap = "Február"; evszak = "Tél"; }
+    else if (szam1 === 3) { honap = "Március"; evszak = "Tavasz"; }
+    else if (szam1 === 4) { honap = "Április"; evszak = "Tavasz"; }
+    else if (szam1 === 5) { honap = "Május"; evszak = "Tavasz"; }
+    else if (szam1 === 6) { honap = "Június"; evszak = "Nyár"; }
+    else if (szam1 === 7) { honap = "Július"; evszak = "Nyár"; }
+    else if (szam1 === 8) { honap = "Augusztus"; evszak = "Nyár"; }
+    else if (szam1 === 9) { honap = "Szeptember"; evszak = "Ősz"; }
+    else if (szam1 === 10) { honap = "Október"; evszak = "Ősz"; }
+    else if (szam1 === 11) { honap = "November"; evszak = "Ősz"; }
+    else if (szam1 === 12) { honap = "December"; evszak = "Tél"; }
+
+document.getElementById("eredmeny1").innerHTML =
+      "A szám: " + szam1 + "<br>" +
+      "Hónap: " + honap + "<br>" +
+      "Évszak: " + evszak;
+
+            }
+        </script>
+
+</body>
+</html>
+</body>
+</html>
