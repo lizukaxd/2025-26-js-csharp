@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>? : for</title>
+</head>
+<body>
+    <script>
+        let rand = Math.random();
+        let ermedobas = rand < 0.5 ? "fej" : "írás";
+        document.write(`Véletlenszám: ${rand}<br>`);
+        document.write(`Érmedobás: ${ermedobas}<br>`);
+
+        let eletkor = Math.floor(Math.random()*100);
+        let szoveg = eletkor <18 ? "fiatal" : eletkor < 65 ? "felnőtt" : "idős";
+        document.write(`életkor: ${eletkor}<br>`)
+        document.write(`szöveg: ${szoveg}<br>`)
+
+        //10 11 12 13 14 15
+        szoveg = "<br>";
+        for (let index = 10; index < 16; index++) {
+            szoveg += index + " ";
+        }
+        document.write(szoveg)
+
+        // 20 19 18 17 16 15
+        szoveg1 = "<br>";
+        for (let index1 = 20; index1 > 14 ; index1--) {
+            szoveg1 += index1 + " ";
+            
+        }
+        document.write(szoveg1)
+
+        //2 4 6 8 10
+        szoveg2 = "<br>"
+        for (let index2 = 2; index2 <= 10; index2+=2) {
+            szoveg2 += index2 + " ";
+            
+        }
+        document.write(szoveg2)
+
+        //1 2 4 8 16 32 64 128 256 512 1024
+        szoveg3 = "<br>"
+        for (let index3 = 1; index3 <= 1024; index3 *= 2) {
+            szoveg3 += index3 + " ";
+            
+        }
+        document.write(szoveg3)
+
+        //Halley-üstökös következő 5 évszáma
+        szoveg4 = "<br>"
+        for (let index4 = 2062; index4 <= 2440; index4 += 76) {
+            szoveg4 += index4 + " ";
+            
+        }
+        document.write(szoveg4)
+
+
+        //számok 1-20-ig, maradjanak ki a 3-mal oszthatók
+        szoveg5 = "<br>"
+        for (let index5 = 1; index5 <= 20; index5++) {
+            if (index5 % 3 == 0) continue;
+            szoveg5 += index5 + " ";
+            
+        }
+        document.write(szoveg5)
+        //számok 1-100-ig, soronként 10 darab,
+        szoveg6 = "<br>"
+        for (let index6 = 1; index6 <= 100; index6++) {
+            szoveg6 += index6 + " ";
+            if (index6 % 10 == 0) {
+                szoveg6 += "<br>";
+            }
+            
+            
+        }
+        document.write(szoveg6)
+        //a hárommal oszthatók helyett 'h' betű, az öttel oszthatók helyett 'ö', a 3-mal és 5-tel oszthatók helyett 'hö'
+        szoveg7 = "<br>"
+        for (let index7 = 1; index7 <= 20; index7++) {
+    if (index7 % 3 == 0 && index7 % 5 == 0) {
+        szoveg7 += "hö ";
+    } else if (index7 % 3 == 0) {
+        szoveg7 += "h ";
+    } else if (index7 % 5 == 0) {
+        szoveg7 += "ö ";
+    } else {
+        szoveg7 += index7 + " ";
+    }
+}
+        document.write(szoveg7)
+    </script>
+</body>
+</html>
