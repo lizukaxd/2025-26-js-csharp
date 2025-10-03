@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gomb</title>
+</head>
+<body>
+    <button id="randomszam">Random szám</button>
+    <p id="generalt">A generált szám: </p>
+    <br>
+    <p id="potiziv">Pozitív számok: </p>
+    <p id="negativ">Negatív számok: </p>
+    <p id="nulla">Nulla: </p>
+    <script>
+        document.getElementById("randomszam").onclick = function() {
+            let randomSzam = Math.floor(Math.random() * 11) - 5;
+            document.getElementById("generalt").innerHTML +=", " + randomSzam;
+        if (randomSzam > 0) {
+            document.getElementById("potiziv").innerHTML +=", " + randomSzam;
+            } else if (randomSzam < 0) {
+                document.getElementById("negativ").innerHTML +=", " + randomSzam;
+            } else {
+                document.getElementById("nulla").innerHTML +=", " + randomSzam;
+            }
+
+        };
+    </script>
+</body>
+</html>
