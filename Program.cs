@@ -1,5 +1,5 @@
 ﻿//1
-/*Console.Write("Mennyi Fibonacci számot szeretnél?: ");
+Console.Write("Mennyi Fibonacci számot szeretnél?: ");
 int fibszam = int.Parse(Console.ReadLine());
 
 int fib1 = 0, fib2 = 1;
@@ -11,7 +11,7 @@ for (int i = 0; i < fibszam; i++)
     fib1 = fib2;
     fib2 = kovfib;
 }
-*/
+
 //2
 
 Console.Write(" * "); 
@@ -30,6 +30,7 @@ for (int sor = 1; sor <= 10; sor++)
     }
     Console.WriteLine();
 }
+
 
 
 
