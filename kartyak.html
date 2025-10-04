@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UNO Cards</title>
+  <style>
+    body {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px;
+    }
+    .card {
+      width: 80px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      
+    }
+    .blue   { background: #007bff; }
+    .yellow { background: #ffc107; color: black; }
+    .red    { background: #dc3545; }
+    .green  { background: #28a745; }
+  </style>
+</head>
+<body>
+
+<script>
+  const colors = ["blue", "yellow", "red", "green"];
+  
+  colors.forEach(color => {
+    for (let i = 1; i <= 15; i++) {   
+      let card = document.createElement("div");
+      card.classList.add("card", color);
+      card.innerText = i;  
+      document.body.appendChild(card);
+    }
+  });
+</script>
+
+</body>
+</html>
