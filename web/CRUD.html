@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="text">Laptop neve: </label>
+    <input type="text" id="szoveg"><br>
+    <label for="text">Ára: </label>
+    <input type="text" id="szam"><br>
+    <button onclick="Hozzaad()" id="hozzaad">Hozzáadás</button>
+    <button onclick = "Modosit()" id = "modosit">Módosítás</button>
+
+    <script>
+        let szamok = [];
+        function Hozzaad() {
+            let szam = parseInt(document.getElementById("szam").value)
+            if (!isNaN(szam)) {
+                szamok.push(szam)
+            }
+
+        }
+
+        function Kiiras() {
+            let kimenet = "<ul>"
+                for (let i= 0; i < szamok.length; i++)
+        }
+    </script>
+</body>
+</html>
