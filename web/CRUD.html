@@ -1,32 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Eszköz lista (CRUD)</title>
 </head>
 <body>
-    <label for="text">Laptop neve: </label>
-    <input type="text" id="szoveg"><br>
-    <label for="text">Ára: </label>
-    <input type="text" id="szam"><br>
-    <button onclick="Hozzaad()" id="hozzaad">Hozzáadás</button>
-    <button onclick = "Modosit()" id = "modosit">Módosítás</button>
+    
+    <div>
+        <label for="nev">Név:</label>
+        <input type="text" id="nev" placeholder="Pl.: Samsung Odyssey G5 S27CG510EU"><br>
+        <label id="felirat" for="szam">Ár (Ft):</label>
+        <input type="number" id="szam" value="0" min="0"><br>
+        <input type="hidden" id="azonosito">
+        <button onclick="hozzaad()" id="hozzaad">Hozzáad</button>
+        <button onclick="modosit()" id="modositGomb" style="display:none;">Módosít</button>
+        <button onclick="clearForm()" id="torolForm">Űrlap törlése</button>
+    </div>
+
+    <div class="stats" id="stats">
+        <strong>Statisztika:</strong>
+        <div id="darabszam" class="muted">Darabszám: 0</div>
+        <div id="legolcsobb" class="muted">Legolcsóbb: -</div>
+        <div id="legdragabb" class="muted">Legdrágább: -</div>
+        <div id="atlag" class="muted">Átlagár: -</div>
+    </div>
+
+    <div id="lista"></div>
 
     <script>
-        let szamok = [];
-        function Hozzaad() {
-            let szam = parseInt(document.getElementById("szam").value)
-            if (!isNaN(szam)) {
-                szamok.push(szam)
+        // adatokat tömb: [ [név, ár], ... ]
+        // Üres tömb — csak a felhasználó által bevitt elemek lesznek benne
+        const adatok = [];
+
+        function kiiratas() {
+            let kimenet = "<table>";
+            kimenet += "<thead><th>#</th><th>Név</th><th>Ár (Ft)</th><th>Művelet</th></thead>";
+            kimenet += "<tbody>";
+
+            // statisztika számítása
+            const n = adatok.length;
+            const prices = adatok.map(a => a[1]);
+            const sum = prices.reduce((a,b) => a + b, 0);
+            const avg = n ? sum / n : 0;
+            const minPrice = n ? Math.min(...prices) : 0;
+            const maxPrice = n ? Math.max(...prices) : 0;
+            let minIndex = -1; let maxIndex = -1;
+            if (n) { minIndex = prices.indexOf(minPrice); maxIndex = prices.indexOf(maxPrice); }
+
+            for (let i = 0; i < adatok.length; i++) {
+                const name = adatok[i][0];
+                const price = adatok[i][1];
+                
+                let style = '';
+                if (i === minIndex) style = 'color:#d97706'; 
+                else if (i === maxIndex) style = 'color:#6b21a8'; 
+                else if (price > avg) style = 'color:#1e63d6'; 
+                else if (price < avg) style = 'color:#2b8a3e'; 
+
+                const styleAttr = style ? ` style="${style}"` : '';
+
+                kimenet += `<tr${styleAttr}>`;
+                kimenet += `<td>${i+1}.</td><td>${name}</td><td>${price} Ft</td>`;
+                kimenet += `<td><button onclick="torles(${i})">Törlés</button> <button onclick="modositForm(${i})">Módosítás</button></td>`;
+                kimenet += `</tr>`;
             }
+            kimenet += "</tbody></table>";
 
+            document.getElementById('darabszam').innerText = `Darabszám: ${n}`;
+            document.getElementById('legolcsobb').innerText = n ? `Legolcsóbb: ${adatok[minIndex][0]} — ${minPrice} Ft` : 'Legolcsóbb: -';
+            document.getElementById('legdragabb').innerText = n ? `Legdrágább: ${adatok[maxIndex][0]} — ${maxPrice} Ft` : 'Legdrágább: -';
+            document.getElementById('atlag').innerText = n ? `Átlagár: ${avg.toFixed(0)} Ft` : 'Átlagár: -';
+
+            document.getElementById('lista').innerHTML = kimenet;
         }
 
-        function Kiiras() {
-            let kimenet = "<ul>"
-                for (let i= 0; i < szamok.length; i++)
+        function hozzaad() {
+            const nev = document.getElementById('nev').value.trim();
+            const szam = parseInt(document.getElementById('szam').value);
+            adatok.push([nev, szam]);
+            clearForm();
+            kiiratas();
         }
+
+        function torles(id) {
+            if (!confirm('Törölni szeretnéd az elemet?')) return;
+            adatok.splice(id,1);
+            kiiratas();
+        }
+
+        function modositForm(id) {
+            document.getElementById('modositGomb').style.display = 'inline';
+            document.getElementById('hozzaad').style.display = 'none';
+            document.getElementById('felirat').innerText = 'Módosítás - ár:';
+            document.getElementById('nev').value = adatok[id][0];
+            document.getElementById('szam').value = adatok[id][1];
+            document.getElementById('azonosito').value = id;
+        }
+
+        function modosit() {
+            const id = parseInt(document.getElementById('azonosito').value);
+            const nev = document.getElementById('nev').value.trim();
+            const szam = parseInt(document.getElementById('szam').value);
+            adatok[id] = [nev, szam];
+            document.getElementById('modositGomb').style.display = 'none';
+            document.getElementById('hozzaad').style.display = 'inline';
+            document.getElementById('felirat').innerText = 'Ár (Ft):';
+            clearForm();
+            kiiratas();
+        }
+
+        function clearForm() {
+            document.getElementById('nev').value = '';
+            document.getElementById('szam').value = 0;
+            document.getElementById('azonosito').value = '';
+            document.getElementById('modositGomb').style.display = 'none';
+            document.getElementById('hozzaad').style.display = 'inline';
+            document.getElementById('felirat').innerText = 'Ár (Ft):';
+        }
+
+        // initial render
+        kiiratas();
     </script>
 </body>
 </html>
