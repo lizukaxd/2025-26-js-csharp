@@ -32,7 +32,8 @@
 	</ul>
 
 	<script>
-		//body
+		
+		// body
 		let b = document.body;
 		b.style.backgroundColor = "#ededc1";
 		b.style.backgroundSize = "70px 70px";
@@ -40,37 +41,53 @@
 		b.style.backgroundPosition = "right top";
 		b.style.padding = "15px 95px 15px 15px";
 		b.style.backgroundImage = "url('hatterkocka.png')";
-		//
+		b.style.color = "#443502"; // minden szöveg barnás
 
+		// kép
+		let cimkep = document.querySelector("#cimkep");
+		cimkep.style.float = "left";
+		cimkep.style.height = "150px";
+		cimkep.alt = "Rubik-kocka";
+		cimkep.title = "Rubik-kocka";
 
+		// h1
+		document.querySelector("h1").style.margin = "40px 0px 100px 175px";
 
-//
-//#cimkep{
-//  float:left;  
-//}
-//
-//h1{
-//  margin: 40px 0px 100px 175px;
-//}
-//
-//p{
-//  text-align: justify;
-//}
-//
-//
-//.jobbra{
-//  text-align: right;
-//}
-//
-//.erdekesseg{
-//  font-size: 70%;
-//  padding: 7px;
-//  font-weight: normal;
-//}
-//
-//li{
-//  font-weight:bold;
-//}
+		// bekezdések
+		document.querySelectorAll("p").forEach(p => {
+			p.style.textAlign = "justify";
+			p.style.margin = "5px";
+		});
+
+		// első alcím és utána bekezdés jobbra
+		document.querySelector("h2").className = "jobbra";
+		document.querySelector("h2 + p").className = "jobbra";
+		document.querySelectorAll(".jobbra").forEach(el => el.style.textAlign = "right");
+
+		// „Ha az ember…” bekezdés
+		let erdekessegP = Array.from(document.querySelectorAll("p"))
+			.find(p => p.textContent.startsWith("Ha az ember"));
+		erdekessegP.className = "erdekesseg";
+
+		// erdekesseg osztály formázása
+		document.querySelectorAll(".erdekesseg").forEach(el => {
+			el.style.fontSize = "70%";
+			el.style.padding = "7px";
+			el.style.fontWeight = "normal";
+			el.style.fontStyle = "italic";
+			el.style.backgroundColor = "white";
+		});
+
+		// lista
+		document.querySelector("ul").style.listStyleType = "square";
+
+		// listaelemek: első bekezdés félkövér, második erdekesseg
+		document.querySelectorAll("li").forEach(li => {
+			let paras = li.querySelectorAll("p");
+			paras[0].style.fontWeight = "bold";
+			paras[1].className = "erdekesseg";
+		});
 	</script>
- </body>
+
+</body>
 </html>
