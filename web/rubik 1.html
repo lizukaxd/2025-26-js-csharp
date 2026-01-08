@@ -32,8 +32,45 @@
 	</ul>
 
 	<script>
+
+
+		//sima
+
+		document.title = "Rubik-kocka";
+		let ps = document.querySelectorAll("p");
+
+		for (let i = 0; i < ps.length; i++) {
+			ps[i].style.margin = "5px";
+		}
+
+		let img1 = document.querySelector("img"); 
+		img1.id = "cimkep"; 
+		img1.style.height = "150px";
+
+		let cimkep = document.querySelector("#cimkep");
+		cimkep.title = "Rubik-kocka";
+		cimkep.alt = "Rubik-kocka";
+
+		let ul = document.querySelector("ul");
+		ul.style.listStyleType = "square";
+
+		let lis = document.querySelectorAll("li");
+
+		for (let i = 0; i < lis.length; i++) {
+			let ps = lis[i].querySelectorAll("p"); 
+			lis[i].style.fontWeight = "bold";
+
+
+			let p1 = ps[0]; 
+			let p2 = ps[1]; 
+
+			p1.style.fontWeight = "bold";      
+			p2.classList.add("erdekesseg");    
+		}
+
+
 		
-		// body
+		// css
 		let b = document.body;
 		b.style.backgroundColor = "#ededc1";
 		b.style.backgroundSize = "70px 70px";
@@ -41,52 +78,39 @@
 		b.style.backgroundPosition = "right top";
 		b.style.padding = "15px 95px 15px 15px";
 		b.style.backgroundImage = "url('hatterkocka.png')";
-		b.style.color = "#443502"; // minden szöveg barnás
+		b.style.color = "#443502";
 
-		// kép
-		let cimkep = document.querySelector("#cimkep");
-		cimkep.style.float = "left";
-		cimkep.style.height = "150px";
-		cimkep.alt = "Rubik-kocka";
-		cimkep.title = "Rubik-kocka";
+		let img = document.querySelector("img");
+		img.style.float = "left";
 
-		// h1
-		document.querySelector("h1").style.margin = "40px 0px 100px 175px";
+		let h1 = document.querySelector("h1");
+		h1.style.margin = "40px 0px 0px 175px";
 
-		// bekezdések
-		document.querySelectorAll("p").forEach(p => {
-			p.style.textAlign = "justify";
-			p.style.margin = "5px";
-		});
+		let p = document.querySelector("p");
+		p.style.textAlign = "justify";
 
-		// első alcím és utána bekezdés jobbra
-		document.querySelector("h2").className = "jobbra";
-		document.querySelector("h2 + p").className = "jobbra";
-		document.querySelectorAll(".jobbra").forEach(el => el.style.textAlign = "right");
+		let h2 = document.querySelector("h2"); 
+		h2.classList.add("jobbra");
+		h2.style.textAlign = "right";
 
-		// „Ha az ember…” bekezdés
-		let erdekessegP = Array.from(document.querySelectorAll("p"))
-			.find(p => p.textContent.startsWith("Ha az ember"));
-		erdekessegP.className = "erdekesseg";
+		let p1 = h2.nextElementSibling;
+		p1.classList.add("jobbra");
+		p1.style.textAlign = "right"; 
 
-		// erdekesseg osztály formázása
-		document.querySelectorAll(".erdekesseg").forEach(el => {
-			el.style.fontSize = "70%";
-			el.style.padding = "7px";
-			el.style.fontWeight = "normal";
-			el.style.fontStyle = "italic";
-			el.style.backgroundColor = "white";
-		});
+		let p2 = p1.nextElementSibling; 
+		p2.classList.add("jobbra");
+		p2.style.textAlign = "right";
 
-		// lista
-		document.querySelector("ul").style.listStyleType = "square";
 
-		// listaelemek: első bekezdés félkövér, második erdekesseg
-		document.querySelectorAll("li").forEach(li => {
-			let paras = li.querySelectorAll("p");
-			paras[0].style.fontWeight = "bold";
-			paras[1].className = "erdekesseg";
-		});
+		let erdekesseg = document.querySelectorAll(".erdekesseg");
+
+		for (let i = 0; i < erdekesseg.length; i++) {
+			erdekesseg[i].style.fontSize = "70%";
+			erdekesseg[i].style.padding = "7px";
+			erdekesseg[i].style.fontWeight = "normal";
+			erdekesseg[i].style.fontStyle = "italic";     
+			erdekesseg[i].style.backgroundColor = "white"; 
+		}
 	</script>
 
 </body>
