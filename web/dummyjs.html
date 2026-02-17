@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termékek - DummyJSON</title>
+  <style>
+    
+  </style>
+</head>
+<body>
+  <h1>Termékek - DummyJSON</h1>
+
+  <div id="table-container"></div>
+  <div id="random-product-container"></div>
+  <div id="furniture-container"></div>
+  <div id="statistics-container"></div>
+
+  <script>
+    const URL = "https://dummyjson.com/products";
+    let products;
+    
+    document.addEventListener("DOMContentLoaded", init);
+
+    async function init() {
+        await loadData();
+        displayFirstTenProducts();
+        displayRandomProduct();
+        displayFurnitureProducts();
+        displayStatistics();
+    }
+    
+    let loadData = async () => {
+        const response = await fetch(URL);
+        const data = await response.json();
+        products = data.products;
+    }
+
+    function displayFirstTenProducts() {
+        const container = document.getElementById("table-container");
+        const firstTen = products.slice(0, 10);
+        
+        let html = `
+            <h2>Az első 10 termék</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Név</th>
+                        <th>Kategória</th>
+                        <th>Kép (Thumbnail)</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+        
+        firstTen.forEach(product => {
+            html += `
+                <tr>
+                    <td>${product.title}</td>
+                    <td>${product.category}</td>
+                    <td><img src="${product.thumbnail}" alt="${product.title}" style="max-height: 100px;"></td>
+                </tr>
+            `;
+        });
+        
+        html += `
+                </tbody>
+            </table>
+        `;
+        
+        container.innerHTML = html;
+    }
+
+    function displayRandomProduct() {
+        const container = document.getElementById("random-product-container");
+        const randomIndex = Math.floor(Math.random() * products.length);
+        const product = products[randomIndex];
+        
+        const html = `
+            <div class="product-detail">
+                <h2>Kiemelt termék</h2>
+                <img src="${product.thumbnail}" alt="${product.title}">
+                <div class="product-info">
+                    <p><strong>Név:</strong> ${product.title}</p>
+                    <p><strong>Kategória:</strong> ${product.category}</p>
+                    <p><strong>Ár:</strong> $${product.price}</p>
+                    <p><strong>Értékelés:</strong> ${product.rating}/5</p>
+                    <p><strong>Készlet:</strong> ${product.stock} db</p>
+                    <p><strong>Leírás:</strong> ${product.description}</p>
+                </div>
+            </div>
+        `;
+        
+        container.innerHTML = html;
+    }
+
+    function displayFurnitureProducts() {
+        const container = document.getElementById("furniture-container");
+        const furnitureProducts = products.filter(p => p.category === "furniture");
+        
+        let html = `
+            <div class="furniture-list">
+                <h2>Bútorok (${furnitureProducts.length} db)</h2>
+                <ol>
+        `;
+        
+        furnitureProducts.forEach(product => {
+            html += `<li>${product.title}</li>`;
+        });
+        
+        html += `
+                </ol>
+            </div>
+        `;
+        
+        container.innerHTML = html;
+    }
+
+    function displayStatistics() {
+        const container = document.getElementById("statistics-container");
+        
+        // Legolcsóbb és legdrágább termék
+        let cheapest = products[0];
+        let mostExpensive = products[0];
+        
+        products.forEach(product => {
+            if (product.price < cheapest.price) cheapest = product;
+            if (product.price > mostExpensive.price) mostExpensive = product;
+        });
+        
+        // Kategóriák száma
+        const categories = new Set(products.map(p => p.category));
+        
+        // Átlagár
+        const avgPrice = (products.reduce((sum, p) => sum + p.price, 0) / products.length).toFixed(2);
+        
+        // Átlagos értékelés
+        const avgRating = (products.reduce((sum, p) => sum + p.rating, 0) / products.length).toFixed(2);
+        
+        const html = `
+            <div class="statistics">
+                <h2>Statisztika</h2>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <p><strong>Összes termék:</strong> ${products.length}</p>
+                    </div>
+                    <div class="stat-box">
+                        <p><strong>Kategóriák:</strong> ${categories.size}</p>
+                    </div>
+                    <div class="stat-box">
+                        <p><strong>Átlagár:</strong> $${avgPrice}</p>
+                    </div>
+                    <div class="stat-box">
+                        <p><strong>Átlagos értékelés:</strong> ${avgRating}/5</p>
+                    </div>
+                    <div class="stat-box cheapest">
+                        <p><strong>Legolcsóbb:</strong></p>
+                        <p>${cheapest.title}</p>
+                        <p>$${cheapest.price}</p>
+                    </div>
+                    <div class="stat-box most-expensive">
+                        <p><strong>Legdrágább:</strong></p>
+                        <p>${mostExpensive.title}</p>
+                        <p>$${mostExpensive.price}</p>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        container.innerHTML = html;
+    }
+  </script>
+</body>
+</html>

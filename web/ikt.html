@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Rendezések</title>
+</head>
+<body>
+
+<h1>Rendezési algoritmusok</h1>
+
+<h2>Egyszerű cserés rendezés</h2>
+<pre id="simple"></pre>
+
+<h2>Buborékrendezés</h2>
+<pre id="bubble"></pre>
+
+<h2>Beszúró rendezés</h2>
+<pre id="insertion"></pre>
+
+<script>
+// Egyszerű cserés rendezés
+function simpleExchangeSort(arr) {
+  let steps = [];
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] > arr[j]) {
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+        steps.push([...arr]);
+      }
+    }
+  }
+  return steps;
+}
+
+// Buborékrendezés
+function bubbleSort(arr) {
+  let steps = [];
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length - 1 - i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+        steps.push([...arr]);
+      }
+    }
+  }
+  return steps;
+}
+
+// Beszúró rendezés
+function insertionSort(arr) {
+  let steps = [];
+  for (let i = 1; i < arr.length; i++) {
+    let key = arr[i];
+    let j = i - 1;
+    while (j >= 0 && arr[j] > key) {
+      arr[j + 1] = arr[j];
+      j--;
+      steps.push([...arr]);
+    }
+    arr[j + 1] = key;
+    steps.push([...arr]);
+  }
+  return steps;
+}
+
+// Kiíratás
+let input = [6, 3, 
+10, 15, 9, 8];
+
+document.getElementById("simple").textContent =
+  simpleExchangeSort([...input]).map(s => s.join(" ")).join("\n");
+
+document.getElementById("bubble").textContent =
+  bubbleSort([...input]).map(s => s.join(" ")).join("\n");
+
+document.getElementById("insertion").textContent =
+  insertionSort([...input]).map(s => s.join(" ")).join("\n");
+</script>
+
+</body>
+</html>

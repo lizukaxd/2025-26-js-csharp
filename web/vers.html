@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>Költő szókincs elemző – versek.txt automatikus beolvasása</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 900px; margin: 20px auto; line-height: 1.5; }
+    table { border-collapse: collapse; width: 100%; margin-top: 15px; }
+    th, td { border: 1px solid #ccc; padding: 4px 8px; text-align: left; }
+    th { background: #f0f0f0; }
+  </style>
+</head>
+<body>
+
+  <h1>Költő szókincs elemző </h1>
+
+  <p>A program beolvassa a <strong>versek.txt</strong> fájlt.</p>
+
+  <h2>Top 10 szó (kötőszavak nélkül)</h2>
+  <table id="top10Table">
+    <thead>
+      <tr><th>Rang</th><th>Szó</th><th>Előfordulás</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h2>Top 100 szó (nyers lista)</h2>
+  <table id="top100Table">
+    <thead>
+      <tr><th>Rang</th><th>Szó</th><th>Előfordulás</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h2>Értelmezés az eredmények alapján</h2>
+<p>
+  A leggyakoribb tartalmas szavak azt mutatják, hogy a költőt erősen foglalkoztatja az idő múlása és a jelen pillanat jelentősége. 
+  A „most”, „mikor” és „ma” gyakorisága arra utal, hogy verseiben gyakran reflektál a pillanat feszültségére vagy sürgetésére. 
+  A „vagyok” és „valaki” szavak az énkeresés és a személyes lét kérdéseit emelik központi témává. 
+  A „szép” és a „nagy” jelzők gyakori használata érzelmileg telített, képszerű költői világra utal. 
+  Összességében az eredmény nem meglepő, de szépen kirajzolja a költő visszatérő motívumait és gondolkodásmódját.
+</p>
+
+
+  <script>
+    const stopwords = new Set([
+  "a","az","és","s","hogy","de","mert","vagy","ha","mint","is","nem","se","sem",
+  "egy","ez","ezt","azt","itt","ott","úgy","már","még","csak","fel","le","be","ki",
+  "én","te","ő","mi","ti","ők","van","volt","lesz","lenni","lett","volna"
+]);
+
+
+    function normalize(text) {
+      text = text.toLowerCase();
+      text = text.replace(/[^a-záéíóöőúüű\s-]/g, " ");
+      text = text.replace(/\s+/g, " ").trim();
+      return text;
+    }
+
+    function countWords(text) {
+      const words = normalize(text).split(" ");
+      const freq = {};
+      for (const w of words) {
+        if (!w) continue;
+        freq[w] = (freq[w] || 0) + 1;
+      }
+      return Object.entries(freq).sort((a, b) => b[1] - a[1]);
+    }
+
+    function fillTable(body, data, limit) {
+      body.innerHTML = "";
+      for (let i = 0; i < Math.min(limit, data.length); i++) {
+        const [word, count] = data[i];
+        const row = `<tr><td>${i+1}</td><td>${word}</td><td>${count}</td></tr>`;
+        body.innerHTML += row;
+      }
+    }
+
+    fetch("versek.txt")
+      .then(response => response.text())
+      .then(text => {
+        const sorted = countWords(text);
+
+        // Top 100 nyers
+        fillTable(document.querySelector("#top100Table tbody"), sorted, 100);
+
+        // Top 10 szurt
+        const filtered = sorted.filter(([w]) => !stopwords.has(w));
+        fillTable(document.querySelector("#top10Table tbody"), filtered, 10);
+      })
+      .catch(err => {
+        document.body.innerHTML += "<p style='color:red;'>Hiba: A versek.txt fájl nem található.</p>";
+      });
+  </script>
+
+</body>
+</html>

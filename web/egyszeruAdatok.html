@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeneszámok</title>
+</head>
+<body>
+    <script>
+        const zeneszamok = [
+            {"eloado": "Halász Judit", "dalcim": "Micimackó", "evszam": 1985},
+            {"eloado": "Republic", "dalcim": "Micimackó", "evszam": 2000},
+            {"eloado": "Rúzsa Magdi", "dalcim": "Tejút", "evszam": 2015},
+            {"eloado": "AC/DC", "dalcim": "Thunder", "evszam": 1990}
+        ]
+
+        //console.log(typeof(zeneszamok)); object
+        const listazas = () => {
+            let ul = document.createElement("ul");
+            zeneszamok.forEach((zeneszam) => {
+                let li = document.createElement("li");
+                li.textContent = `előadó: ${zeneszam.eloado} - dalcím: ${zeneszam.dalcim}`;
+                ul.append(li);
+            });
+            document.body.append(ul);
+        }
+
+        const modositas = () => {
+            const eloado = "Majka";
+            const dalcim = "90-es évek";
+            const evszam = 2018;
+            zeneszamok[3] = {eloado, dalcim, evszam};
+            zeneszamok[3].evszam = 2019;
+            console.log(zeneszamok[3]);
+            document.body.append(document.createElement("hr"));
+            listazas();
+        }
+
+        const felvetel = ()=>{
+            const eloado = "Majka";
+            const dalcim = "Csurran, cseppen";
+            const evszam = 2024;
+            zeneszamok.push({eloado, dalcim, evszam});
+            document.body.append(document.createElement("hr"));
+            listazas();
+        }
+
+        const torles = (index)=>{
+            zeneszamok.splice(index,1);
+            document.body.append(document.createElement("hr"));
+            listazas();
+        }
+
+        const init = () =>{
+            listazas();
+            modositas();
+            felvetel();
+            torles(3);
+        }
+
+        document.addEventListener("DOMContentLoaded", init);
+
+    </script>
+</body>
+</html>

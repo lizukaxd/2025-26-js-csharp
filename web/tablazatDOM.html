@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        h3 {
+            margin-bottom: 20px;
+        }
+
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        table#tab8 img {
+            height: 60px;
+        }
+
+        button {
+            text-align: center;
+        }        
+        td,
+        th {
+            border: 1px solid black;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h3>
+        insertRow(), insertCell()
+    </h3>
+    <p>Új sor beillesztése a táblázat végére a <em>JavaScript, 6, 7</em> adatokkal.</p>
+    <table id="tab1">
+        <thead>
+            <tr>
+                <th>Programozási nyelv</th>
+                <th>2024</th>
+                <th>2019</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Python</td>
+                <td>1</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>C++</td>
+                <td>2</td>
+                <td>4</td>
+            </tr>
+        </tbody>
+    </table>
+    <br/>
+    <button id = "feladat1">Új sor beillesztése
+    </button>
+    <h3>
+        createTHead(), insertRow(), insertCell()
+    </h3>
+    Fejlécsor készítésa: <em>Programozási nyelv, 2024, 2019</em> 
+    <table id="tab2">
+        <tbody>
+            <tr>
+                <td>Python</td>
+                <td>1</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>C++</td>
+                <td>2</td>
+                <td>4</td>
+            </tr>
+        </tbody>
+    </table>
+    <br/>
+    <button id = "feladat2">Táblázatfejléc készítése
+    </button>
+    <h3>
+        Táblázat készítése</br>
+        append(), createTHead(), createTBody(), insertRow(), insertCell()
+    </h3>
+   <pre>
+    const adatok = [
+            ["Programozási nyelv", 2024, 2019],
+            [ "Python", 1, 3],
+            ["C++", 2, 4],
+            ["JavaScript", 6, 7]
+        ];
+    </pre>
+    <div id = "f3"></div>
+    <button id = "feladat3">Táblázat készítése
+    </button>
+    <h3>
+        tBodies[], rows[], cells[]
+    </h3>
+    <p>A táblázat egy cellájának módosítása. (A Python helyezését 2019-ben módosítsd 3-ra.)</p>
+    <table id="tab4">
+        <thead>
+            <tr>
+                <th>Programozási nyelv</th>
+                <th>2024</th>
+                <th>2019</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Python</td>
+                <td>1</td>
+                <td>három</td>
+            </tr>
+            <tr>
+                <td>C++</td>
+                <td>2</td>
+                <td>4</td>
+            </tr>
+        </tbody>
+    </table>
+    <br/>
+    <button id = "feladat4">Egy cella módosítása
+    </button>
+    <h3>
+        insertRow(), insertCell()
+    </h3>
+    <p>A Python után illesszük be a <em>C++, 2, 4</em> sort.</p>
+    <table id="tab5">
+        <thead>
+            <tr>
+                <th>Programozási nyelv</th>
+                <th>2024</th>
+                <th>2019</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Python</td>
+                <td>1</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>JavaScript</td>
+                <td>6</td>
+                <td>7</td>
+            </tr>
+        </tbody>
+    </table>
+    <br/>
+    <button id = "feladat5">Új sor beillesztése
+    </button>
+    <h3>
+       Új oszlop beillesztése
+    </h3>
+    <p>Készíts egy <em>változás</em> nevű oszlopot: ebben jelenítsd meg, hogy a nyelvek mennyi helyet javítottak vagy rontottak 2019-hez képest.</p>
+    <table id="tab6">
+        <thead>
+            <tr>
+                <th>Programozási nyelv</th>
+                <th>2024</th>
+                <th>2019</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Python</td>
+                <td>1</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>C++</td>
+                <td>2</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>JavaScript</td>
+                <td>6</td>
+                <td>7</td>
+            </tr>
+        </tbody>
+    </table>
+    <br/>
+    <button id = "feladat6">Új oszlop beillesztése
+    </button>
+    <h3>Oszlopok színezése
+    </h3>
+    <p>Színezd más-más színnel a táblázat oszlopait!</p>
+    <table id="tab7">
+        <thead>
+            <tr>
+                <th>Programozási nyelv</th>
+                <th>2024</th>
+                <th>2019</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Python</td>
+                <td>1</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>C++</td>
+                <td>2</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>JavaScript</td>
+                <td>6</td>
+                <td>7</td>
+            </tr>
+        </tbody>
+    </table>
+    <br/>
+    <button id = "feladat7">Oszlopok színezése
+    </button>
+    <h3>Cellák kattintás eseménye
+    </h3>
+    <p>A programozási nyelv cellájára kattintva jelenjen meg a cellában a nyelv logója!</p>
+    <table id="tab8">
+        <thead>
+            <tr>
+                <th>Programozási nyelv</th>
+                <th>2024</th>
+                <th>2019</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Python</td>
+                <td>1</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>C++</td>
+                <td>2</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>JavaScript</td>
+                <td>6</td>
+                <td>7</td>
+            </tr>
+        </tbody>
+    </table>
+    <br/>
+    <h3>
+        A feladatok számozása
+     </h3>
+     <p>Számozd meg a dokumentum h3 címsorait!</p>
+     
+    <h3>Adventi naptár
+    </h3>
+    <p>Készíts adventi naptárat!<br>
+        egy táblázat 24 cellájában az 1-24 közötti számok legyenek összekeverve, <br>
+        egy cellára kattintva egy kép jelenjen meg,<br>
+        csak sorrendben lehessen kattintani, először az 1-es számra.
+    </p>
+    
+    <button id = "feladat10">Naptár készítése
+    </button>
+    <script>
+        // Feladat 1: Új sor beillesztése a tab1 végére: ["JavaScript", 6, 7]
+        const feladat1 = () => {
+            const tbody = document.getElementById("tab1").tBodies[0];
+            const row = tbody.insertRow();
+            ["JavaScript", 6, 7].forEach((ertek) => {
+                const cell = row.insertCell();
+                cell.textContent = ertek;
+            });
+        };
+
+        // Feladat 2: Fejléc létrehozása a tab2 táblához
+        const feladat2 = () => {
+            const table = document.getElementById("tab2");
+            let thead = table.tHead;
+            if (!thead) thead = table.createTHead();
+            if (thead.rows.length === 0) {
+                const row = thead.insertRow();
+                ["Programozási nyelv", "2024", "2019"].forEach((szoveg) => {
+                    const th = document.createElement("th");
+                    th.textContent = szoveg;
+                    row.appendChild(th);
+                });
+            }
+        };
+
+        // Feladat 3: Táblázat készítése az "adatok" tömbből és beillesztése a #f3 div-be
+        const feladat3 = () => {
+            const adatok = [
+                ["Programozási nyelv", 2024, 2019],
+                ["Python", 1, 3],
+                ["C++", 2, 4],
+                ["JavaScript", 6, 7],
+            ];
+
+            const table = document.createElement("table");
+            table.style.margin = "0 auto";
+            table.style.borderCollapse = "collapse";
+            table.style.textAlign = "center";
+            const thead = table.createTHead();
+            const tbody = table.createTBody();
+
+            // Fejléc
+            const hrow = thead.insertRow();
+            adatok[0].forEach((cimke) => {
+                const th = document.createElement("th");
+                th.textContent = cimke;
+                hrow.appendChild(th);
+            });
+
+            // Törzs
+            for (let i = 1; i < adatok.length; i++) {
+                const row = tbody.insertRow();
+                adatok[i].forEach((ertek) => {
+                    const cell = row.insertCell();
+                    cell.textContent = ertek;
+                });
+            }
+
+            const target = document.getElementById("f3");
+            target.innerHTML = "";
+            target.append(table);
+        };
+
+        // Feladat 4: A tab4 táblázat Python 2019 cellájának módosítása 3-ra
+        const feladat4 = () => {
+            const table = document.getElementById("tab4");
+            const cell = table.tBodies[0].rows[0].cells[2];
+            cell.textContent = "3";
+        };
+
+        // Feladat 5: Új sor beillesztése a Python utáni pozícióba a tab5-ben
+        const feladat5 = () => {
+            const tbody = document.getElementById("tab5").tBodies[0];
+            const row = tbody.insertRow(1);
+            ["C++", 2, 4].forEach((ertek) => {
+                const cell = row.insertCell();
+                cell.textContent = ertek;
+            });
+        };
+
+        // Feladat 6: Új "változás" oszlop hozzáadása a tab6-hoz, diff = 2019 - 2024
+        const feladat6 = () => {
+            const table = document.getElementById("tab6");
+            const thead = table.tHead;
+            if (thead && thead.rows.length > 0) {
+                const hrow = thead.rows[0];
+                const lastText = hrow.cells.length ? hrow.cells[hrow.cells.length - 1].textContent : "";
+                if (lastText !== "változás") {
+                    const th = document.createElement("th");
+                    th.textContent = "változás";
+                    hrow.appendChild(th);
+                }
+            }
+
+            const tbody = table.tBodies[0];
+            for (const row of tbody.rows) {
+                // Kerüljük a többszöri hozzáadást: ha már 4 cella van, ne tegyünk hozzá.
+                if (row.cells.length >= 4) continue;
+                const v2024 = parseInt(row.cells[1].textContent, 10);
+                const v2019 = parseInt(row.cells[2].textContent, 10);
+                const diff = v2019 - v2024; 
+                const cell = row.insertCell();
+                cell.textContent = String(diff);
+                if (!Number.isNaN(diff)) {
+                    cell.style.fontWeight = "bold";
+                    cell.style.color = diff > 0 ? "green" : diff < 0 ? "red" : "inherit";
+                }
+            }
+        };
+
+        // Feladat 7: Oszlopok színezése a tab7-ben (thead + tbody)
+        const feladat7 = () => {
+            const table = document.getElementById("tab7");
+            const colors = ["#e0f7fa", "#e8f5e9", "#fff9c4"];
+
+            if (table.tHead && table.tHead.rows.length > 0) {
+                const hrow = table.tHead.rows[0];
+                for (let c = 0; c < hrow.cells.length; c++) {
+                    hrow.cells[c].style.backgroundColor = colors[c % colors.length];
+                }
+            }
+
+            const tbody = table.tBodies[0];
+            for (const row of tbody.rows) {
+                for (let c = 0; c < row.cells.length; c++) {
+                    row.cells[c].style.backgroundColor = colors[c % colors.length];
+                }
+            }
+        };
+
+        // Feladat 8: Kattintásra a tab8 első oszlopának celláiban jelenjen meg a nyelv logója
+        const setupTab8Clicks = () => {
+            const iconSlug = {
+                "Python": "python",
+                "C++": "cplusplus",
+                "JavaScript": "javascript",
+            };
+            const table = document.getElementById("tab8");
+            const tbody = table.tBodies[0];
+            for (const row of tbody.rows) {
+                const cell = row.cells[0];
+                cell.style.cursor = "pointer";
+                cell.addEventListener(
+                    "click",
+                    () => {
+                        const key = cell.textContent.trim();
+                        const slug = iconSlug[key];
+                        if (!slug) return;
+                        cell.innerHTML = `<img alt="${key} logo" src="https://cdn.jsdelivr.net/npm/simple-icons@9/icons/${slug}.svg">`;
+                    },
+                    { once: true }
+                );
+            }
+        };
+
+        // Feladat 9: h3 címsorok számozása
+        const szamozH3 = () => {
+            const heads = document.querySelectorAll("h3");
+            heads.forEach((h3, i) => {
+                const prefix = document.createTextNode(`${i + 1}. `);
+                h3.insertBefore(prefix, h3.firstChild);
+            });
+        };
+
+        // Feladat 10: Adventi naptár
+        const shuffle = (arr) => {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        };
+
+        const feladat10 = () => {
+            let container = document.getElementById("naptar-container");
+            if (!container) {
+                container = document.createElement("div");
+                container.id = "naptar-container";
+                document.getElementById("feladat10").insertAdjacentElement("afterend", container);
+            } else {
+                container.innerHTML = "";
+            }
+
+            const table = document.createElement("table");
+            table.style.margin = "0 auto";
+            table.style.borderCollapse = "collapse";
+            table.style.textAlign = "center";
+            const tbody = table.createTBody();
+
+            const nums = shuffle(Array.from({ length: 24 }, (_, i) => i + 1));
+            let idx = 0;
+            const cols = 6, rows = 4;
+            for (let r = 0; r < rows; r++) {
+                const row = tbody.insertRow();
+                for (let c = 0; c < cols; c++) {
+                    const cell = row.insertCell();
+                    cell.style.border = "1px solid black";
+                    cell.style.padding = "8px";
+                    const n = nums[idx++];
+                    cell.textContent = String(n);
+                }
+            }
+            container.appendChild(table);
+
+            let next = 1;
+            tbody.querySelectorAll("td").forEach((cell) => {
+                cell.style.cursor = "pointer";
+                cell.addEventListener("click", () => {
+                    const n = parseInt(cell.textContent, 10);
+                    if (n !== next) return; 
+                    cell.innerHTML = `<img alt="Ajándék" src="https://clipart-library.com/free/gift-transparent.html">`;
+                    next++;
+                });
+            });
+        };
+
+        // Inicializálás: eseménykezelők és automatikus feladatok
+        const init = () => {
+            document.getElementById("feladat1").addEventListener("click", feladat1);
+            document.getElementById("feladat2").addEventListener("click", feladat2);
+            document.getElementById("feladat3").addEventListener("click", feladat3);
+            document.getElementById("feladat4").addEventListener("click", feladat4);
+            document.getElementById("feladat5").addEventListener("click", feladat5);
+            document.getElementById("feladat6").addEventListener("click", feladat6);
+            document.getElementById("feladat7").addEventListener("click", feladat7);
+            document.getElementById("feladat10").addEventListener("click", feladat10);
+
+            // Feladat 8: kattintásos logók a tab8 első oszlopában
+            setupTab8Clicks();
+
+            // Feladat 9: h3 számozása
+            szamozH3();
+        };
+
+        document.addEventListener("DOMContentLoaded", init);
+    </script>
+</body>
+</html>

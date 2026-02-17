@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Feladat")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3a0cc08bf717b4b61c44dcc7bfe3103d79959b01")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2e2e83ef5541502d1500ad3e6e03ec44ef3fa31b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Feladat")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Feladat")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

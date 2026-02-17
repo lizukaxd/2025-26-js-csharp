@@ -21,9 +21,9 @@
 /home/liza/code/Feladat/obj/Debug/net8.0/Feladat.AssemblyInfoInputs.cache
 /home/liza/code/Feladat/obj/Debug/net8.0/Feladat.AssemblyInfo.cs
 /home/liza/code/Feladat/obj/Debug/net8.0/Feladat.csproj.CoreCompileInputs.cache
+/home/liza/code/Feladat/obj/Debug/net8.0/Feladat.sourcelink.json
 /home/liza/code/Feladat/obj/Debug/net8.0/Feladat.dll
 /home/liza/code/Feladat/obj/Debug/net8.0/refint/Feladat.dll
 /home/liza/code/Feladat/obj/Debug/net8.0/Feladat.pdb
 /home/liza/code/Feladat/obj/Debug/net8.0/Feladat.genruntimeconfig.cache
 /home/liza/code/Feladat/obj/Debug/net8.0/ref/Feladat.dll
-/home/liza/code/Feladat/obj/Debug/net8.0/Feladat.sourcelink.json
