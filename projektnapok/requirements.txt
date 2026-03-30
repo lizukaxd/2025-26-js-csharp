@@ -1,0 +1,5 @@
+groq
+supabase
+feedparser
+requests
+python-dotenv
